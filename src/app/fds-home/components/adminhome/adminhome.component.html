@@ -1,0 +1,65 @@
+
+
+
+
+<div class="row mb-3">
+	<div class="col-md-12">
+		<h1 class="textAlign">{{pageTitle}}</h1>
+	</div>
+	
+	<div class="col-lg-12 ">
+		<div class="card card-body boxshadow">
+			<h2 class="textAlign"><strong> Restaurents </strong></h2>
+			<div class="search-container mb-2  ">
+			    <div class="row">
+				      <input type="text" #searchText value="" placeholder="Search.." name="search">
+				      <button class="ml-2" type="submit" (click)="searchItem($event)">Search Item</button>
+			      </div>
+			  </div>
+			<div class="row restaurent-align" *ngIf="hasRestaurents">
+				<div class="gridwidth">
+					<table class="table table striped table-bordered">
+						<thead>
+							<th>Sl.No</th>
+							<th>Name</th>
+							<th>Rating</th>
+							<th>Location</th>
+							<th>Item Name</th>
+							<th>Price</th>
+							<th>Action</th>
+						</thead>
+						<tbody>
+							<tr *ngFor="let restaurent of restaurentList; let index= index;">
+								<td>{{index+1}}</td>
+								<td>{{restaurent.name}}</td>
+								<td>{{restaurent.rating}}</td>	
+								<td>{{restaurent.location}}</td>
+								<td>{{restaurent.itemName}}</td>	
+								<td>{{restaurent.price}}</td>
+								<td>
+									<button type="submit" (click)="orderItem(restaurent)" class="btn btn-warning btn-rounded waves-effect waves-light">Order Item</button>
+								</td>
+							</tr>
+						</tbody>
+					
+					</table>
+				</div>
+			
+			</div>
+			<div *ngIf="hasRestaurents==false">
+				<p>No restaurents has been associated to admin</p>
+				<nav>
+					<a class="nav-link" routerLink="addRestaurent" routerLinkActive="active">Add Restaurent</a>
+				</nav>
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	
+	
+</div>
+
+<router-outlet></router-outlet>
+
